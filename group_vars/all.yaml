@@ -1,0 +1,6 @@
+smtp_server: "smtp.gmail.com"
+smtp_port: 587
+email_user: "arun.r12694@gmail.com"
+email_pass: "stnq twfc sdaf rleu"
+alert_recipient: "arun.r12694@gmail.com"
+
