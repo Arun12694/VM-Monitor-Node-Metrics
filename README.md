@@ -1,19 +1,20 @@
 Ansible Project To Monitor VMs Health
 
 🔹 Step 1: Update the System
-sudo apt update && sudo apt upgrade –y
+# sudo apt update && sudo apt upgrade –y
 
 ________________________________________
 🔹 Step 2: Add the Ansible PPA
 Ansible provides an official maintained PPA (for latest versions):
-sudo add-apt-repository --yes --update ppa:ansible/ansible
+# sudo add-apt-repository --yes --update ppa:ansible/ansible
 
 ________________________________________
 🔹 Step 3: Install Ansible
-sudo apt install ansible –y
+# sudo apt install ansible –y
 
 ________________________________________
 # Install AWS CLI
+
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip
 unzip awscliv2.zip
@@ -23,7 +24,8 @@ aws configure
 
 
 
-Tagging Script:
+**Tagging Script:**
+
 #!/bin/bash
 
 # Fetch instance IDs that match Environment=dev and Role=web
@@ -47,7 +49,8 @@ done
 
 
 
-ansible.cfg
+# ansible.cfg
+
 [defaults]
 inventory = ./inventory/aws_ec2.yaml
 host_key_checking = False
@@ -57,7 +60,8 @@ ssh_args = -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
 
 
 
-Dynamic Inventory
+**Dynamic Inventory**
+
 inventory/aws_ec2.yaml 
 plugin: amazon.aws.aws_ec2
 regions:
@@ -76,15 +80,19 @@ keyed_groups:
 
 
 # Step 1: Install venv module if not already present
+
 sudo apt install python3-venv -y
 
 # Step 2: Create a virtual environment
+
 python3 -m venv ansible-env
 
 # Step 3: Activate it
+
 source ansible-env/bin/activate
 
 # Step 4: Install required Python packages
+
 pip install boto3 botocore docker
 
 ansible-galaxy collection installamazon.aws
@@ -95,7 +103,8 @@ ansible-inventory -i inventory/aws_ec2.yaml --graph
 
 
 
-Copy Pub Key
+**Copy Pub Key**
+
 #!/bin/bash
 
 # Define vars
@@ -105,6 +114,7 @@ USER="ubuntu"  # or ec2-user
 INVENTORY_FILE="inventory/aws_ec2.yaml"
 
 # Extract hostnames/IPs from dynamic inventory
+
 HOSTS=$(ansible-inventory -i $INVENTORY_FILE --list | jq -r '._meta.hostvars | keys[]')
 
 for HOST in $HOSTS; do
@@ -121,7 +131,7 @@ Done
 
 
 Create the Project & Run below Command to execute
-Project Repo: https://github.com/jaiswaladi246/Ansible-VM-Monitor.git
+Project Repo: https://github.com/jaiswaladi246/Ansible-VM-Monitor.git](https://github.com/Arun12694/VM-Monitor-Node-Metrics.git
 
 ansible-playbook playbook.yaml
 
