@@ -1,4 +1,4 @@
-Ansible Project To Monitor VMs Health
+**Ansible Project To Monitor VMs Health & the report send on EMAIL**
 
 🔹 Step 1: Update the System
 # sudo apt update && sudo apt upgrade –y
